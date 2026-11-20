@@ -17,6 +17,7 @@ typedef ElmMhs* adrMhs;
 
 struct ListMahasiswa {
     adrMhs first;
+    adrMhs 
 }; 
 
 #endif
