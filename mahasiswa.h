@@ -2,6 +2,9 @@
 #define HEADER_H_INCLUDED
 #include <iostream>
 using namespace std;
+typedef struct ElmMataKuliah *adrMatkul;
+typedef ElmMhs *adrMhs;
+
 struct infotypeMhs{
     string nim;
     string nama;
@@ -13,7 +16,21 @@ struct ElmMhs{
     adrMatkul firstMatkul;
 };
 
-typedef ElmMhs* adrMhs;
+struct MataKuliah{
+    string nama_mk;
+    string kode_mk; 
+    string dosen_pengampu;
+    string kelas;
+    string ruang;
+    string jadwal;
+    int sks;
+};
+
+struct ElmMataKuliah{
+    MataKuliah info;
+    adrMatkul* next;
+    adrMatkul* prev;
+};
 
 struct ListMahasiswa {
     adrMhs first;
