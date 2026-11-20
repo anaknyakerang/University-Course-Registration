@@ -35,5 +35,10 @@ struct ElmMataKuliah{
 struct ListMahasiswa {
     adrMhs first;
 }; 
-
+void createListMahasiswa(ListMahasiswa &L);
+adrMhs alokasiMahasiswa(string nim, string nama, string jurusan);
+void insertLastMahasiswa(ListMahasiswa &L, adrMhs P);
+void showAllMahasiswa(ListMahasiswa L);
+adrMhs searchMahasiswa(ListMahasiswa L, string nim);
+void deleteMahasiswa(ListMahasiswa &L, string nim);
 #endif

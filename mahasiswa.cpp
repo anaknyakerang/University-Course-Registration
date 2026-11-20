@@ -1,5 +1,17 @@
 #include "mahasiswa.h"
+void createListMahasiswa(ListMahasiswa &L){
+    L.first = nullptr;
+}
 
+adrMhs alokasiMahasiswa(string nim, string nama, string jurusan){
+    adrMhs P = new ElmMhs;
+    P->info.nim = nim;
+    P->info.nama = nama;
+    P->info.jurusan = jurusan;
+    P->nextMatkul = nullptr;
+    P->firstMatkul = nullptr;
+    return P;
+}
 
 adrMatkul addElmMatakuliah(string nama_mk, string kode_mk, string dosen_pengampu, string kelas, string ruang, string jadwal, int sks){
     adrMatkul p = new ElmMataKuliah;
@@ -13,6 +25,9 @@ adrMatkul addElmMatakuliah(string nama_mk, string kode_mk, string dosen_pengampu
     return p;
 }
 
+adrMhs searchMahasiswa(ListMahasiswa L, string nim);
+
+
 adrMatkul searchMatkulByKode(adrMhs p,string kode_mk){
     p = p->firstMatkul;
     while (p != NULL) {
@@ -23,6 +38,8 @@ adrMatkul searchMatkulByKode(adrMhs p,string kode_mk){
     }
     return NULL;
 }
+
+void insertLastMahasiswa(ListMahasiswa &L, adrMhs P);
 
 void addMatkul(adrMhs &p, adrMatkul q){
     if(p->firstMatkul == NULL){
@@ -55,6 +72,8 @@ void ShowMatkul(adrMhs p){
         }
     }
 }
+void showAllMahasiswa(ListMahasiswa L);
+void deleteMahasiswa(ListMahasiswa &L, string nim);
 
 void deleteMatkulByKode(){
 
