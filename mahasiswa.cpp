@@ -68,6 +68,8 @@ void ShowMatkul(adrMhs p){
             cout << "Jadwal: " << temp->info.jadwal << endl;
             cout << "SKS: " << temp->info.sks << endl;
             cout << endl;
+            q->next = nullptr;
+            q->prev = nullptr;
             temp = temp->next;
         }
     }
