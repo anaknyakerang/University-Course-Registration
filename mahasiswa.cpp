@@ -68,11 +68,14 @@ adrMatkul searchMatkulByKode(adrMhs p,string kode_mk){
 }
 
 void ShowMatkul(adrMhs p){
-    if(p->firstMatkul == NULL){
+    if(p == nullptr){
+        cout << "Mahasiswa tidak ditemukan." << endl;
+    }else if (p->firstMatkul == nullptr){
         cout << "Tidak ada mata kuliah yang diambil." << endl;
     }else{
         adrMatkul temp = p->firstMatkul;
-        while(temp != NULL){
+
+        while(temp != nullptr){
             cout << "Nama Mata Kuliah: " << temp->info.nama_mk << endl;
             cout << "Kode Mata Kuliah: " << temp->info.kode_mk << endl;
             cout << "Dosen Pengampu: " << temp->info.dosen_pengampu << endl;
@@ -81,6 +84,7 @@ void ShowMatkul(adrMhs p){
             cout << "Jadwal: " << temp->info.jadwal << endl;
             cout << "SKS: " << temp->info.sks << endl;
             cout << endl;
+            
             temp = temp->next;
         }
     }
