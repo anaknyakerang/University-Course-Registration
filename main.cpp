@@ -1,17 +1,19 @@
-#include mahasiswa.h
+#include "mahasiswa.h"
+#include <string>
+#include <iostream>
+using namespace std;
 
 int main(){
     ListMahasiswa L; 
-    createListMahasiswa(L); 
-
     int pilih = -1;
     string nim, nama, jurusan;
     string nama_mk, kode_mk, dosen_pengampu; 
     string kelas, ruang, jadwa;
     int sks; 
     bool berhenti = false;
-
     adrMhs p;
+
+    createListMahasiswa(L); 
     
     while (pilih != 0 && !berhenti){
         cout << "\n========================================\n";
