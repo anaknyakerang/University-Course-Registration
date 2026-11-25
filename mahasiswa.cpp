@@ -30,8 +30,12 @@ void showAllMahasiswa(ListMahasiswa L){
 void deleteMahasiswa(ListMahasiswa &L, string nim){
 
 }
-
-//mata kuliah
+//================================
+//mata kuliah terkeren
+//================================
+bool isEmptyMataKuliah(adrMhs p){
+    return (p->firstMatkul == nullptr);
+}
 adrMatkul addElmMatakuliah(string nama_mk, string kode_mk, string dosen_pengampu, string kelas, string ruang, string jadwal, int sks){
     adrMatkul p = new ElmMataKuliah;
     p->info.nama_mk = nama_mk;
@@ -47,6 +51,15 @@ void addMatkul(adrMhs &p, adrMatkul q){
     if(p->firstMatkul == NULL){
         p->firstMatkul = q;
     }else{
+        if(findMatkulByKode(p,q->info.kode_mk) != NULL){
+            cout << "Mata kuliah dengan kode " << q->info.kode_mk << " sudah ada cik." << endl;
+            return;
+
+        }
+        if(countSKS(p) + q->info.sks > 24){
+            cout << "Total SKS melebihi batas maksimal 24 SKS." << endl;
+            return;
+        }
         adrMatkul temp = p->firstMatkul;
         while(temp->next != NULL){
             temp = temp->next;
@@ -56,7 +69,17 @@ void addMatkul(adrMhs &p, adrMatkul q){
     }
 }
 
-adrMatkul searchMatkulByKode(adrMhs p,string kode_mk){
+int countSKS(adrMhs p){
+    int totalSKS = 0;
+    adrMatkul temp = p->firstMatkul;
+    while(temp != NULL){
+        totalSKS += temp->info.sks;
+        temp = temp->next;
+    }
+    return totalSKS;
+}
+
+adrMatkul findMatkulByKode(adrMhs p,string kode_mk){
     p = p->firstMatkul;
     while (p != NULL) {
         if (p->info.kode_mk == kode_mk) {
@@ -91,5 +114,17 @@ void ShowMatkul(adrMhs p){
 }
 
 void deleteMatkulByKode(adrMhs p, string kode_mk){
-
+    
 }
+
+
+void deleteAllMatkul(adrMhs p){
+    adrMatkul temp = p->firstMatkul;
+    while(temp != nullptr){
+        adrMatkul toDelete = temp;
+        temp = temp->next;
+        delete toDelete;
+    }
+    p->firstMatkul = nullptr;
+}
+
